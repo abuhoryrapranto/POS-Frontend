@@ -88,7 +88,7 @@ export default {
                         data: [],
                         active:false,
                         icon: "fa fa-user",
-                        parentlink: "/"
+                        parentlink: "/admins"
                     },
                     "Staffs" : {
                         data: [
@@ -254,7 +254,7 @@ export default {
                         data: [],
                         active:false,
                         icon: "fa fa-user",
-                        parentlink: "/"
+                        parentlink: "/admins"
                     },
                     "Staffs" : {
                         data: [
