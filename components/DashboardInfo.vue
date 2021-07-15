@@ -15,11 +15,11 @@
             <b-col>
                 <b-card>
                     <div class="float-left">
-                        <h6>Total Products Sold</h6>
+                        <h6>Products Sold</h6>
                         <span class="text-success">12</span>
                     </div>
                     <div class="float-right">
-                        <img class="img-fluid" src="/sold.png" alt="Flab POS" style="height:50px; width:50px">
+                        <img class="img-fluid" src="/sold.png" alt="Flab POS" style="height:45px; width:45px">
                     </div>
                 </b-card>
             </b-col>
