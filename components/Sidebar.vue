@@ -1,6 +1,6 @@
 <template>
-    <div class="main-div">
-        <aside class="side-menu">
+    <div class="wrapper">
+        <div class="side-menu">
             <div class="sidebar-area bg-dark">
                 <div class="sidebar-content">
                     <div class="shop-info">
@@ -11,9 +11,14 @@
                     </div>
                 </div>
             </div>
-        </aside>
-        <Navbar :fullName="fullName" />
-        <Nuxt />
+        </div>
+        <div class="page-content">
+            <Navbar :fullName="fullName" />
+            <div class="container-fluid">
+                <Nuxt />
+            </div>
+        </div>
+        
     </div>
 </template>
 
@@ -28,11 +33,15 @@ export default {
 </script>
 
 <style scoped>
-
+.wrapper {
+    display: flex;
+    position: relative;
+}
 .side-menu {
-    float: left;
+    overflow-x: hidden;
 }
 .sidebar-area {
+    position: fixed;
     height: 100vh;
     width: 230px;
 }
@@ -40,5 +49,10 @@ export default {
     padding: 15px 0px 0px 0px;
     border-bottom: 1px solid lightgray;
 }
-
+.page-content {
+    width: 100%;
+    margin-left: 230px;
+    background: #f2f2f2;
+    height: 100vh;
+}
 </style>
