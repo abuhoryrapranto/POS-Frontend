@@ -2,16 +2,27 @@
 <!-- eslint-disable -->
     <div class="item-name mt-3">
         <div v-for="(item, index) in items">
-           <p class="item-link" @click="item.active = !item.active">
+           <div class="item-link" v-if="item.data != ''" @click="item.active = !item.active">
                 <i :class="item.icon" aria-hidden="true"></i> <span class="ml-2">{{index}}</span>
                <span class="float-right" v-if="item.data != ''">
                    <i class="fa fa-angle-left" aria-hidden="true" v-if="item.active == false"></i>
                    <i class="fa fa-angle-down" aria-hidden="true" v-if="item.active"> </i>
                 </span> 
-            </p>
-           <p class="child-item-link" v-show="item.active" v-if="item.data  != '' && child.show " v-for="child in item.data">
-               {{child.label}}
-            </p>
+            </div>
+            <div v-else>
+                <NuxtLink class="link" :to="item.parentlink">
+                    <div class="item-link">
+                        <i :class="item.icon" aria-hidden="true"></i> <span class="ml-2">{{index}}</span>
+                    </div>
+                    
+                </NuxtLink>
+            </div>
+            <div  v-show="item.active" v-if="item.data  != '' && child.show " v-for="child in item.data">
+                <NuxtLink :to="child.link" class="link">
+                    <p class="child-item-link"> {{child.label}} </p>
+                </NuxtLink> 
+            </div>
+           
         </div>
     </div>
 </template>
@@ -33,7 +44,7 @@
 }
 .child-item-link {
     margin-bottom: 0px;
-    padding: 3px 35px;
+    padding: 5px 35px;
     border-left: 5px solid tomato;
     color: white;
     font-size: 13px;
@@ -43,6 +54,11 @@
     cursor: pointer;
     color: white;
 }
+.link{
+    color: white;
+    text-decoration: none;
+}
+
 </style>
 
 <script>
@@ -65,28 +81,30 @@ export default {
                     "Dashboard" : {
                         data: [],
                         active:false,
-                        icon: "fa fa-tachometer"
+                        icon: "fa fa-tachometer",
+                        parentlink: "/dashboard"
                     },
                     "Admins" : {
                         data: [],
                         active:false,
-                        icon: "fa fa-user"
+                        icon: "fa fa-user",
+                        parentlink: "/"
                     },
                     "Staffs" : {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Staffs List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Staffs",
-                                    link: "",
+                                    link: "/",
                                     show: false
                             }
                         ],
@@ -97,32 +115,32 @@ export default {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/products/add-product",
                                     show: true
                             },
                             {
                                     label: "Products List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Products Brands",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Product Types",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Products Units",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Products",
-                                    link: "",
+                                    link: "/",
                                     show: false
                             }
                         ],
@@ -132,23 +150,24 @@ export default {
                     "Customers" : {
                         data: [],
                         active:false,
-                        icon: "fa fa-address-card-o"
+                        icon: "fa fa-address-card-o",
+                        parentlink: "/"
                     },
                     "Suppliers" : {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Supplier List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Supplier",
-                                    link: "",
+                                    link: "/",
                                     show: false
                             },
                             
@@ -160,17 +179,17 @@ export default {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Purchase List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Puchase",
-                                    link: "",
+                                    link: "/",
                                     show: false
                             },
                             
@@ -182,17 +201,17 @@ export default {
                         data: [
                             {
                                     label: "Create New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Invoice List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Invoice",
-                                    link: "",
+                                    link: "/",
                                     show: false
                             },
                             
@@ -203,17 +222,20 @@ export default {
                     "Reports" : {
                         data: [],
                         active:false,
-                        icon: "fa fa-file-pdf-o"
+                        icon: "fa fa-file-pdf-o",
+                        parentlink: "/"
                     },
                     "Branch Settings" : {
                         data: [],
                         active:false,
-                        icon: "fa fa-cogs"
+                        icon: "fa fa-cogs",
+                        parentlink: "/"
                     },
                     "Shop Settings" : {
                         data: [],
                         active:false,
-                        icon: "fa fa-wrench"
+                        icon: "fa fa-wrench",
+                        parentlink: "/"
                     },
                 
                 };
@@ -225,155 +247,161 @@ export default {
                     "Dashboard" : {
                         data: [],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-tachometer",
+                        parentlink: "/"
                     },
                     "Admins" : {
                         data: [],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-user",
+                        parentlink: "/"
                     },
                     "Staffs" : {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Staffs List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Staffs",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             }
                         ],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-users"
                     },
                     "Products" : {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/products/add-product",
                                     show: true
                             },
                             {
                                     label: "Products List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Products Brands",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Product Types",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Products Units",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Products",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             }
                         ],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-shopping-bag"
                     },
                     "Customers" : {
                         data: [],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-address-card-o",
+                        parentlink: "/"
                     },
                     "Suppliers" : {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Supplier List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Supplier",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             
                         ],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-industry"
                     },
                     "Purchase" : {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Purchase List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Puchase",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             
                         ],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-shopping-basket"
                     },
                     "Invoices" : {
                         data: [
                             {
                                     label: "Create New",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Invoice List",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             {
                                     label: "Deleted Invoice",
-                                    link: "",
+                                    link: "/",
                                     show: true
                             },
                             
                         ],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-files-o"
                     },
                     "Reports" : {
                         data: [],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-file-pdf-o",
+                        parentlink: "/"
                     },
                     "Branch Settings" : {
                         data: [],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-cogs",
+                        parentlink: "/"
                     },
                     "Shop Settings" : {
                         data: [],
                         active:false,
-                        icon: ""
+                        icon: "fa fa-wrench",
+                        parentlink: "/"
                     },
                 
                 };

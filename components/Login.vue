@@ -4,6 +4,9 @@
     <div class="row justify-content-md-center">
       <div class="card login-box">
       <div class="card-body">
+        <div class="logo text-center mb-2">
+          <img class="img-fluid" src="/logo.svg" alt="Flab POS" width="150">
+        </div>
         <div class="form-group">
           <label class="label-text">Email</label>
           <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
