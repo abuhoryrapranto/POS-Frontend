@@ -94,12 +94,12 @@ export default {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "/",
+                                    link: "/staffs/add-staff",
                                     show: true
                             },
                             {
                                     label: "Staffs List",
-                                    link: "/",
+                                    link: "/staffs/all",
                                     show: true
                             },
                             {
@@ -120,7 +120,7 @@ export default {
                             },
                             {
                                     label: "Products List",
-                                    link: "/",
+                                    link: "/products/all",
                                     show: true
                             },
                             {
@@ -151,7 +151,7 @@ export default {
                         data: [],
                         active:false,
                         icon: "fa fa-address-card-o",
-                        parentlink: "/"
+                        parentlink: "/customers"
                     },
                     "Suppliers" : {
                         data: [
@@ -260,12 +260,12 @@ export default {
                         data: [
                             {
                                     label: "Add New",
-                                    link: "/",
+                                    link: "/staffs/add-staff",
                                     show: true
                             },
                             {
                                     label: "Staffs List",
-                                    link: "/",
+                                    link: "/staffs/all",
                                     show: true
                             },
                             {
@@ -286,7 +286,7 @@ export default {
                             },
                             {
                                     label: "Products List",
-                                    link: "",
+                                    link: "/products/all",
                                     show: true
                             },
                             {
@@ -317,7 +317,7 @@ export default {
                         data: [],
                         active:false,
                         icon: "fa fa-address-card-o",
-                        parentlink: "/"
+                        parentlink: "/customers"
                     },
                     "Suppliers" : {
                         data: [
