@@ -125,17 +125,17 @@ export default {
                             },
                             {
                                     label: "Products Brands",
-                                    link: "/",
+                                    link: "/products/brands",
                                     show: true
                             },
                             {
                                     label: "Product Types",
-                                    link: "/",
+                                    link: "/products/types",
                                     show: true
                             },
                             {
                                     label: "Products Units",
-                                    link: "/",
+                                    link: "/products/units",
                                     show: true
                             },
                             {
@@ -286,22 +286,22 @@ export default {
                             },
                             {
                                     label: "Products List",
-                                    link: "/",
+                                    link: "",
                                     show: true
                             },
                             {
                                     label: "Products Brands",
-                                    link: "/",
+                                    link: "/products/brands",
                                     show: true
                             },
                             {
                                     label: "Product Types",
-                                    link: "/",
+                                    link: "/products/types",
                                     show: true
                             },
                             {
                                     label: "Products Units",
-                                    link: "/",
+                                    link: "/products/units",
                                     show: true
                             },
                             {

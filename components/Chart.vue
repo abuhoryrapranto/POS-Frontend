@@ -8,7 +8,7 @@ export default {
           labels: ["Jan",	"Feb",	"Mar",	"Apr",	"May",	"Jun",	"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
           datasets: [
             {
-              label: 'Line Chart',
+              label: 'Yealy Sales',
               data: [600, 1150, 342, 6050, 2522, 3241, 1259, 157, 1545, 9841, 300, 987],
               fill: false,
               borderColor: '#2554FF',
