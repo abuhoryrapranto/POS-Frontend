@@ -5,7 +5,7 @@
                 <b-nav-item-dropdown :text="name" right>
                     <b-dropdown-item href="#" class="dropdown-list">Change Password</b-dropdown-item>
                     <hr>
-                    <b-dropdown-item href="#" class="dropdown-list" variant="danger">Sign Out</b-dropdown-item>
+                    <b-dropdown-item @click="logout" class="dropdown-list" variant="danger">Sign Out</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
             </b-collapse>
@@ -23,11 +23,17 @@
 
 <script>
 export default {
-
     props: ['fullName'],
     data() {
         return {
             name: this.fullName
+        }
+    },
+
+    methods: {
+        logout() {
+            this.$auth.logout();
+            this.$router.push({ path: '/' });
         }
     },
     

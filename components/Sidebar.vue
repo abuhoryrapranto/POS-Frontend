@@ -24,11 +24,16 @@
 
 <script>
 export default {
+
     data() {
         return {
-            fullName: "Md. Abu Horyra Pranto"
+            fullName: this.$store.state.auth.user.last_name ? this.$store.state.auth.user.last_name  : this.$store.state.auth.user.email,
         }
     },
+
+    mounted() {
+
+    }
 }
 </script>
 

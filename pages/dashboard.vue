@@ -11,6 +11,7 @@
 </style>
 <script>
 export default {
+  middleware: 'auth',
   head() {
     return {
       title: "Dashboard"
