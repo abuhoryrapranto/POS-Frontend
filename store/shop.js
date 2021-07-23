@@ -1,9 +1,9 @@
 export const state = () => ({
-   shop: ''
+   shopStatus: ''
 })
 
 export const mutations = {
-    checkShop(state) {
-      state.shop = 'open';
+    checkShop(state, data) {
+      state.shopStatus = data;
     }
   }

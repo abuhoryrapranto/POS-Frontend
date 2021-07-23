@@ -9,7 +9,7 @@
             </b-col>
             <b-col class="open-shop">
                 <div class="content-area">
-                    <h4 class="text-center text-white">Open Your Shop</h4>
+                    <h4 class="text-center text-white mb-3">Open Your Shop</h4>
                     <b-card class="card">
                         <div class="form-group">
                         <label class="form-label">Name:</label>
