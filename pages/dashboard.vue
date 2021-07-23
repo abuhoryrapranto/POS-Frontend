@@ -1,6 +1,6 @@
 <template>
   <div class="main-div mt-3">
-    <h4 style="color: #3385ff;">Dashboard</h4>
+    <h4 style="color: #3385ff;">Dashboard {{this.$store.state}}</h4>
     <DashboardInfo />
     <br>
     <Chart />

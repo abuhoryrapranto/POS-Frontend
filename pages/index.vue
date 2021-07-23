@@ -7,6 +7,7 @@
         <div class="logo text-center mb-2">
           <img class="img-fluid" src="/logo.svg" alt="Flab POS" width="150">
         </div>
+        <small v-if="serverMessage"  class="form-text text-danger">{{serverMessage}}</small>
         <div class="form-group">
           <label class="label-text">Email</label>
           <input type="email" v-model="user.email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
@@ -36,6 +37,7 @@ export default {
   data() {
     return {
       errors: {},
+      serverMessage: '',
       user: {
         email: '',
         password: ''
@@ -52,9 +54,9 @@ export default {
                         password: this.user.password
                     }
                  })
+                 this.$store.commit('shop/checkShop');
                  this.$router.push({ path: '/dashboard' });
             } catch (err) {
-                this.buttonDisabled = false;
                 this.errors = err.response.data.errors || {};
                 if(err.response.data.message == "Password not match") {
                     this.serverMessage = err.response.data.message;
