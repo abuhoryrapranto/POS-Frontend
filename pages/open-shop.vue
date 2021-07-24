@@ -1,9 +1,10 @@
 <template>
+<!-- eslint-disable -->
     <div class="container-fluid main-area">
         <b-row>
             <b-col class="info-area">
                 <div class="logo">
-                    <img src="/logo.svg" alt="Flab POS" width="400">
+                    <img class="img-fluid" src="/logo.svg" alt="Flab POS" width="400">
                     <h4 class="float">POS & Inventory Solution</h4>
                 </div>
             </b-col>
@@ -23,22 +24,17 @@
                         <label class="form-label">Country</label>
                         <select class="form-control">
                             <option value="">---Select---</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option v-for="country in countries">{{country.name}}</option>
                         </select>
                         </div>
                         <div class="form-group">
                         <label class="form-label">Currency</label>
                         <select class="form-control">
                             <option value="">---Select---</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option v-for="currency in currencies">{{currency.name}}</option>
                         </select>
                         </div>
+                        <button class="btn btn-success btn-sm float-right pl-3 pr-3">Next</button>
                     </b-card>
                 </div>
             </b-col>
@@ -74,6 +70,47 @@
 
 <script>
 export default {
-    layout: "empty"
+    layout: "empty",
+    middleware: ['auth', 'checkShop'],
+    head() {
+        return {
+            title: 'Open Shop'
+        }
+    },
+    data() {
+        return {
+            countries: {},
+            currencies: {}
+        }
+    },
+    created() {
+        this.getCountries();
+        this.getCurrencies();
+    },
+    methods: {
+        async getCountries() {
+            await this.$axios.$get('/all-countries')
+            .then(response => {
+                if(response.status_code == 200) {
+                    this.countries = response.data;
+                } 
+                else {
+                    this.countries = {};
+                }
+            })
+        },
+
+        async getCurrencies() {
+            await this.$axios.$get('/all-currencies')
+            .then(response => {
+                if(response.status_code == 200) {
+                    this.currencies = response.data;
+                } 
+                else {
+                    this.currencies = {};
+                }
+            })
+        },
+    }
 }
 </script>

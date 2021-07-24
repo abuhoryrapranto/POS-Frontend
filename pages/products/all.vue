@@ -3,3 +3,8 @@
         <h4 style="color: #3385ff;">Products</h4>
     </div>
 </template>
+<script>
+export default {
+  middleware: ['auth', 'checkShop'],
+}
+</script>

@@ -20,3 +20,9 @@
   font-weight: 500;
 }
 </style>
+
+<script>
+export default {
+  middleware: ['auth', 'checkShop'],
+}
+</script>

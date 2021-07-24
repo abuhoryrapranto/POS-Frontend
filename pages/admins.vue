@@ -21,3 +21,9 @@
     text-decoration: none;
 }
 </style>
+
+<script>
+export default {
+    middleware: ['auth', 'checkShop'],
+}
+</script>

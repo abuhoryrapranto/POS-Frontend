@@ -25,3 +25,9 @@
         </b-modal>
     </div>
 </template>
+
+<script>
+export default {
+    middleware: ['auth', 'checkShop'],
+}
+</script>

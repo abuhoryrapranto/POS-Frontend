@@ -1,8 +1,6 @@
-export default function ({ store, redirect }) {
-    //let shop = JSON.stringify(store.state.shop.shopStatus);
-    //let status = shop.toString();
-    if (store.state.shop.shopStatus == 'open') {
+export default async function ({ $axios, redirect }) {
+  let status = await $axios.get('/check-shop-open');
+    if (status.data.data.shop == 'open') {
        return redirect('/open-shop');
-      //console.log(store.state.shop.shopStatus);
     }
   }
