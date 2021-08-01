@@ -54,8 +54,6 @@ export default {
                         password: this.user.password
                     }
                  })
-                //  let status = await this.$axios.$get('/check-shop-open');
-                //  this.$store.commit('shop/checkShop', status.data.shop);
                  this.$router.push({ path: '/dashboard' });
             } catch (err) {
                 this.errors = err.response.data.errors || {};

@@ -58,6 +58,6 @@
 
 <script>
 export default {
-  middleware: ['auth', 'checkShop'],
+  middleware: ['auth', 'checkShopOpen'],
 }
 </script>

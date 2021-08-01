@@ -58,6 +58,6 @@ export default {
     width: 100%;
     margin-left: 230px;
     background: #f2f2f2;
-    height: 100vh;
+    min-height: 100vh;
 }
 </style>

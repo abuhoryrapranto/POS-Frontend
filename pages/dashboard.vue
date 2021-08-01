@@ -10,13 +10,12 @@
 
 </style>
 <script>
-import { mapMutations } from 'vuex'
 export default {
-  middleware: ['auth', 'checkShop'],
+  middleware: ['auth', 'checkShopOpen'],
   head() {
     return {
       title: "Dashboard"
     }
-  },
+  }
 }
 </script>
