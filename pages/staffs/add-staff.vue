@@ -1,6 +1,6 @@
 <template>
     <div class="staf-area mt-3">
-        <h4 style="color: #3385ff;">Add new Staff</h4>
+        <h4 style="color: #00b359;">Add new staff</h4>
         <br>
         <b-card>
             <b-row>
@@ -16,7 +16,7 @@
                     <label class="form-label">Phone:</label>
                     <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">+880</span>
+                        <span class="input-group-text" id="basic-addon1">{{isd}}</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Enter phone number" aria-describedby="basic-addon1">
                     </div>
@@ -31,16 +31,12 @@
                       <input type="text" class="form-control" placeholder="Enter department name">
                     </div>
                   <div class="form-group">
-                    <label class="form-label">Image</label>
-                    <input type="file" class="form-control-file">
-                  </div>
-                  <div class="form-group">
                       <label class="form-label">NID:</label>
                       <input type="text" class="form-control" placeholder="Enter national identity number">
                     </div>
                   <div class="form-group">
                     <label class="form-label">Address</label>
-                    <textarea class="form-control" rows="2"></textarea>
+                    <textarea class="form-control" rows="4"></textarea>
                   </div>
                 </b-col>
         </b-row>
@@ -59,5 +55,31 @@
 <script>
 export default {
   middleware: ['auth', 'checkShopOpen'],
+  head() {
+    return {
+      title: 'Add Staff'
+    }
+  },
+  data() {
+    return {
+      isd: ''
+    }
+  },
+  created() {
+    this.getMyCountry();
+  },
+  methods: {
+    async getMyCountry() {
+            await this.$axios.$get('/admins/my-country')
+            .then(response => {
+                if(response.status_code == 200) {
+                    this.isd = response.data.isd;
+                } 
+                else {
+                    this.countries = '';
+                }
+            })
+        },
+  }
 }
 </script>

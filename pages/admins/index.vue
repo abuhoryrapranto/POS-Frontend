@@ -1,7 +1,7 @@
 <template>
 <!-- eslint-disable -->
     <div class="mt-3">
-        <h4 style="color: #3385ff; display: inline-block;">All  Admins</h4>
+        <h4 style="color: #00b359; display: inline-block;">All  Admins</h4>
         
         <b-button v-if="$auth.user.is_super == 1" v-b-modal.modal-center size="sm" variant="primary" class="float-right">Add New</b-button>
 
@@ -49,7 +49,7 @@
                     <h5 class="card-title">{{admin.first_name}} {{admin.last_name}}</h5>
                     <p class="card-text">{{admin.is_super == 1 ? 'Super Admin' : 'General Admin'}}</p>
                     <b-dropdown size="sm" id="dropdown-dropup" dropup text="Actions" variant="info" class="m-2">
-                        <NuxtLink v-if="admin.id == $auth.user.id || $auth.user.is_super == 1" to="/" class="link"><b-dropdown-item><span class="text-info">Profile</span></b-dropdown-item></NuxtLink>
+                        <NuxtLink v-if="admin.id == $auth.user.id || $auth.user.is_super == 1" @click.native="profile(admin.uuid)" to="/" class="link"><b-dropdown-item><span class="text-info">Profile</span></b-dropdown-item></NuxtLink>
                         <div v-if="$auth.user.is_super == 1">
                             <NuxtLink v-if="admin.id != $auth.user.id" to="/" class="link"><b-dropdown-item><span class="text-warning">Reset Password</span></b-dropdown-item></NuxtLink>
                             <NuxtLink v-if="admin.status == 0 && admin.id != $auth.user.id" @click.native="toggleActive(admin.uuid)" to="/" class="link"><b-dropdown-item><span class="text-success">Active</span></b-dropdown-item></NuxtLink>
@@ -153,6 +153,10 @@ export default {
                     this.getAllAdmins();
                 }
             })
+        },
+
+        profile(uuid) {
+            this.$router.push({path: `/admins/${uuid}`});
         }
     }
 }

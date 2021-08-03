@@ -1,6 +1,6 @@
 <template>
     <div class="main-area mt-3">
-        <h4 style="color: #3385ff;">Add Product</h4>
+        <h4 style="color: #00b359;">Add Product</h4>
         <br>
         <b-card>
             <b-row>

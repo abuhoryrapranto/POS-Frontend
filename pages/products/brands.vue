@@ -1,6 +1,6 @@
 <template>
     <div class="brands-area mt-3">
-        <h4 style="color: #3385ff;">Brands</h4>
+        <h4 style="color: #00b359;">Brands</h4>
 
         <b-button v-b-modal.modal-center size="sm" variant="primary" class="float-right">Add New</b-button>
 
