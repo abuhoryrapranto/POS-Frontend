@@ -32,7 +32,7 @@
             </div>
             <input type="text" class="form-control" placeholder="Enter phone number" v-model="admin.phone" aria-label="Username" aria-describedby="basic-addon1">
             </div>
-            <small v-if="errors.phone"  class="form-text text-danger">{{errors.phone[0]}}</small>
+            <small v-if="errors.phone"  class="form-text text-danger mb-1">{{errors.phone[0]}}</small>
             <button class="btn btn-success btn-sm" @click.prevent="updateProfile"><i class="fa fa-check" aria-hidden="true"></i> Save</button>
             </b-card>
                 </b-col>
@@ -87,7 +87,7 @@ export default {
                     this.isd = response.data.isd;
                 } 
                 else {
-                    this.countries = '';
+                    this.isd = '';
                 }
             })
         },
