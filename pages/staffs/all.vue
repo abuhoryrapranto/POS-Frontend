@@ -54,7 +54,8 @@ export default {
     },
     methods: {
         async getAllStaffs() {
-            await this.$axios.$get('/staffs/all-staffs')
+            try {
+                await this.$axios.$get('/staffs/all-staffs')
             .then(response => {
                 if(response.status_code == 200) {
                     this.loading = false;
@@ -63,7 +64,10 @@ export default {
                 else {
                     this.staffs = {};
                 }
-            })
+                })
+            } catch(err) {
+                this.loading = false;
+            }
         },
 
         async getMyCountry() {
