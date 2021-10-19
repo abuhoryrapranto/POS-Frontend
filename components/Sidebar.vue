@@ -27,7 +27,7 @@ export default {
 
     data() {
         return {
-            fullName: this.$store.state.auth.user.last_name ? this.$store.state.auth.user.last_name  : this.$store.state.auth.user.email,
+            fullName: this.$store.state.auth.user ? this.$store.state.auth.user.last_name  : "Twing",
         }
     },
 

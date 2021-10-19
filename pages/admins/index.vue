@@ -47,7 +47,8 @@
                 <img class="card-img-top" src="/admin.png" alt="Flab POS Admin" height="300">
                 <div class="card-body">
                     <h5 class="card-title">{{admin.first_name}} {{admin.last_name}}</h5>
-                    <p class="card-text">{{admin.is_super == 1 ? 'Super Admin' : 'General Admin'}}</p>
+                    <p class="card-text text-success" v-if="admin.is_super == 1">Super Admin</p>
+                    <p class="card-text text-primary" v-else>General Admin</p>
                     <b-dropdown size="sm" id="dropdown-dropup" dropup text="Actions" variant="info" class="m-2">
                         <NuxtLink v-if="admin.id == $auth.user.id || $auth.user.is_super == 1" @click.native="profile(admin.uuid)" to="/" class="link"><b-dropdown-item><span class="text-info">Profile</span></b-dropdown-item></NuxtLink>
                         <div v-if="$auth.user.is_super == 1">
